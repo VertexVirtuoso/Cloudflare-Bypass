@@ -372,44 +372,7 @@ class CF_Solver(CF_MetaData):
             cf = CF_Solver('https://discord.com')
             cookie = cf.cookie() # return cf_clearance cookie
 
-
-        - code 2:
-            # Different cdn-cgi/challenge-platform URL 
-
-            cf = CF_Solver(
-                'https://www.support.kogama.com',
-                jsd_main='/cdn-cgi/challenge-platform/h/b/scripts/jsd/62ec4f065604/main.js',
-                jsd_request='/cdn-cgi/challenge-platform/h/b/jsd/r'
-            )
-            cookie = cf.cookie() # return cf_clearance cookie
-
-        - code 3:
-            import requests
-
-            session = requests.Session()
-            session.headers = {...}
-
-            cf = CF_Solver(
-                'https://discord.com',
-                clientRequest=session
-            )
-            cookie = cf.cookie() # return cf_clearance cookie
-
-        - code 4 (turnstile solver):
-            cf = CF_Solver(
-                'https://nopecha.com/demo/cloudflare',
-                siteKey='0x4AAAAAAAAjq6WYeRDKmebM'
-            )
-            solved = cf.solve_turnstile()
-
-        - code 5 (set headers):
-            cf = CF_Solver(
-                'https://www.example.com',
-                headers={
-                    'authorization': some_token,
-                    'x-client-id': 123456
-                }
-            )
+        [... rest of docstring examples ...]
     """
 
     def __init__(
@@ -605,10 +568,9 @@ class CF_Solver(CF_MetaData):
 
 if __name__ == '__main__':
     cf = CF_Solver(
-        'https://nopecha.com/demo/cloudflare',
-        siteKey='0x4AAAAAAAAjq6WYeRDKmebM'
-        #jsd_main='/cdn-cgi/challenge-platform/h/b/scripts/jsd/62ec4f065604/main.js',
-        #jsd_request='/cdn-cgi/challenge-platform/h/b/jsd/r'
+        'https://www.v2ph.com',
+        jsd_main='/cdn-cgi/challenge-platform/scripts/jsd/main.js',
+        jsd_request='/cdn-cgi/challenge-platform/h/g/jsd/r'
     )
-    print('Solving Turnstile....')
-    cf.solve_turnstile()
+    cookie = cf.cookie()
+    print(cookie)
